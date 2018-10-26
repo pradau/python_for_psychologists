@@ -4,7 +4,7 @@
 # # Python for Psychologists
 
 # This notebook follows the outline of "Matlab for Psychologists" with translation of the code into Python, and more context is provided in that article.
-# A recommended reference is the [Python for Beginners](https://www.pythonforbeginners.com) website. 
+# A recommended reference is the [Python for Beginners](https://www.pythonforbeginners.com) website.
 
 # ## Getting started
 
@@ -23,7 +23,7 @@
 
 # To check the python version in code you would do the following. The details are not important right now, but you should find the code runs without an error or else your Python version is too low.
 
-# In[79]:
+# In[1]:
 
 
 import sys
@@ -48,7 +48,7 @@ assert sys.version_info >= (3,0)
 # To get help at anytime in a jupyter notebook you can precede a command name with the "?" symbol. This will show the help in a separate pane at the bottom of your notebook page.
 # Run the next code block to see how to get help for the len() function.
 
-# In[80]:
+# In[2]:
 
 
 get_ipython().run_line_magic('pinfo', 'len')
@@ -56,21 +56,21 @@ get_ipython().run_line_magic('pinfo', 'len')
 
 # # Lesson 1 - The Basics
 
-# In[81]:
+# In[3]:
 
 
 A = 10
 A+A
 
 
-# In[82]:
+# In[4]:
 
 
 B = 5+8
 B
 
 
-# In[83]:
+# In[5]:
 
 
 A = 15
@@ -81,7 +81,7 @@ A
 # There is no analogue to "clear all" in Python but if you need to do this in your notebook then use the Jupyter Notebook Kernel menu. e.g. Kernel / Restart and Clear Output to restore to the initial state.
 # Or else use the **%reset** command as shown below but this is only used with ipython or Jupyter notebook.
 
-# In[84]:
+# In[6]:
 
 
 B=1
@@ -94,24 +94,24 @@ del B
 #     **dir()** dictionary of in-scope variables:<br>
 #     **globals()** dictionary of global variables<br>
 #     **locals()** dictionary of local variables
-# 
+#
 
-# In[85]:
+# In[7]:
 
 
 #Get a list of variables in the local scope (which includes hidden variables from your jupyter notebook)
 dir()
 
 
-# In[86]:
+# In[8]:
 
 
-#this will clear the user-defined variables, when using JN. I've commented it out because it stops execution 
+#this will clear the user-defined variables, when using JN. I've commented it out because it stops execution
 #  following lines.
 # %reset
 
 
-# In[87]:
+# In[9]:
 
 
 dir()
@@ -123,13 +123,13 @@ dir()
 #  - if there is only a need to do simple operations like **sum** then a built-in *list* might suffice.<br>
 #  - if matrix/vector multiplication will be required then use a Numpy *array*.<br>
 #  - if the data is mixed with non-numeric then start with a Pandas *dataframe* from which you can extract *arrays*.<br>
-# 
+#
 # For this lesson, we'll stick to Numpy operations and objects.<br>
 # Here's a good [cheat sheet for Numpy operations](https://www.dataquest.io/blog/numpy-cheat-sheet/).
 # And here's a guide to [Numpy for Matlab users](https://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html).
-#  
+#
 
-# In[88]:
+# In[10]:
 
 
 #obtain the external module numpy whose commands we will specify by name (alias) np
@@ -146,7 +146,7 @@ C = C.reshape(-1,1) #-1 indicates number of rows is inferred from specified numb
 print(C)
 
 
-# In[89]:
+# In[11]:
 
 
 #Matrix
@@ -156,7 +156,7 @@ D = np.array([[5,6,7,9],
 print(D)
 
 
-# In[90]:
+# In[12]:
 
 
 #Element
@@ -172,7 +172,7 @@ print(type(a))
 # As shown above you can enter data by initializing np.array() with a list in square brackets [].
 # There is more than one method to create a column vector, one shown above and another below.
 
-# In[91]:
+# In[13]:
 
 
 D = np.array([[3],[1],[6],[5]])
@@ -182,14 +182,14 @@ print(D)
 # To create a 2D matrix you can use a nested list for initialization, one list in \[...] for each row. To access row 2, column 3 of E then index it by using the indices.
 # **Important** Unlike Matlab, Python starts indices from 0 (not 1) so row 2 is indexed by 1, column 3 by index 2 and in general row m by m-1 and column n by n-1.
 
-# In[92]:
+# In[14]:
 
 
 E = np.array([[1,2,3],[4,5,6]])
 print(E[1][2])
 
 
-# In[93]:
+# In[15]:
 
 
 #this produces an indexing error
@@ -198,39 +198,39 @@ print(E[1][2])
 
 # To change part of a matrix you can also use square brackets.
 
-# In[94]:
+# In[16]:
 
 
 E[0][2]= 10 #or it is fine to use E[0,2]=10
 print(E)
 
 
-# In[95]:
+# In[17]:
 
 
 #add a row
-E = np.concatenate((E, [[7,8,9]]), axis=0) 
+E = np.concatenate((E, [[7,8,9]]), axis=0)
 print(E)
 
 
 # ## Colon (indexing)
 # You can read about this in the [Numpy reference](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html).
 
-# In[96]:
+# In[18]:
 
 
 #here the : means "every row" because it is before the comma, and 1 indexes the 2nd column.
 E[:,1]
 
 
-# In[97]:
+# In[19]:
 
 
 #here the : means "every column" because it is after the comma, and 1 indexes the 2nd row.
 E[1,:]
 
 
-# In[98]:
+# In[20]:
 
 
 #we get a list of consecutive integers by range() and initialize an array with it
@@ -239,7 +239,7 @@ F=np.array(range(5,11))
 F
 
 
-# In[99]:
+# In[21]:
 
 
 #convert to a 2D matrix with 1 row and as many columns as the original size of F
@@ -249,7 +249,7 @@ print(F)
 F[:,[2,3,4]]
 
 
-# In[100]:
+# In[22]:
 
 
 #use a step for counting when creating a consecutive integer list from 3 to 20, in steps of 4.
@@ -263,7 +263,7 @@ print(G)
 # # Lesson 3 - Indexing
 # There is no builtin function in Python to create a magic square so we will input it from scratch.
 
-# In[101]:
+# In[23]:
 
 
 A=np.array([[17,24,1,8,15],
@@ -273,7 +273,7 @@ A=np.array([[17,24,1,8,15],
             [11,18,25,2,9]])
 
 
-# In[102]:
+# In[24]:
 
 
 #store 4th row, 3rd column element of A in B
@@ -281,7 +281,7 @@ B=A[3,2]
 print(B)
 
 
-# In[103]:
+# In[25]:
 
 
 #store 4th row of A in C
@@ -289,7 +289,7 @@ C=A[3,:]
 print(C)
 
 
-# In[104]:
+# In[26]:
 
 
 #extract 2nd and 3rd row of A and store in D
@@ -297,7 +297,7 @@ D=A[[1,2],:]
 print(D)
 
 
-# In[105]:
+# In[27]:
 
 
 #extract columns 1 to 3 of D, for all rows.
@@ -305,17 +305,17 @@ E=D[:,[0,1,2]]
 print(E)
 
 
-# In[106]:
+# In[28]:
 
 
 #alternative, compact way to extract a range of columns using the list built from range() of consecutive numbers
 # building a list explicitly as follows is not necessary but can help with debugging because you can see the list.
-# print([x for x in range(0,3)]) 
+# print([x for x in range(0,3)])
 E=D[:,range(0,3)]
 print(E)
 
 
-# In[107]:
+# In[29]:
 
 
 #set the 3rd row,3rd column of A to 100.
@@ -323,7 +323,7 @@ A[2,2]=100
 print(A)
 
 
-# In[108]:
+# In[30]:
 
 
 #set the 4th column to 0
@@ -334,7 +334,7 @@ print(A)
 # ## Lesson 4 - Basic math
 # Some vector/matrix can be accomplished with concise operators (like + or -) while others require a Numpy function.
 
-# In[109]:
+# In[31]:
 
 
 #vector addition
@@ -344,11 +344,11 @@ C = A + B
 print(C)
 
 
-# In[110]:
+# In[32]:
 
 
 #transpose to get a column vector from the original row vector.
-# Note that you can do this even if C was a row vector instead of a 2D matrix. 
+# Note that you can do this even if C was a row vector instead of a 2D matrix.
 print(C.T)
 C = np.array([6,8])
 D = C.T
@@ -361,16 +361,16 @@ print(np.matmul(C,D))
 # **np.dot** for dot product of two arrays<br>
 # **np.divide** for element-wise division<br>
 # **np.power** for raising a matrix to a power<br>
-# 
+#
 
-# In[111]:
+# In[33]:
 
 
 #simple math doesn't require numpy
 print(174*734)
 
 
-# In[112]:
+# In[34]:
 
 
 #simple math with a scalar variable. NOTE that A is not changed here.
@@ -378,7 +378,7 @@ A=10
 print((A*2)/5)
 
 
-# In[113]:
+# In[35]:
 
 
 #2D matrix is multiplied elementwise by the scalar A. The 2nd line and indent is for clarity, not required.
@@ -388,7 +388,7 @@ J= E*A
 print(J)
 
 
-# In[114]:
+# In[36]:
 
 
 #matrix subtraction
@@ -396,7 +396,7 @@ K = J - E
 print(K)
 
 
-# In[115]:
+# In[37]:
 
 
 #create a 2D matrix
@@ -404,14 +404,14 @@ L=np.array([[3,2,1],[9,5,6]])
 print(L)
 
 
-# In[116]:
+# In[38]:
 
 
 #element-wise division
-print(K/L) 
+print(K/L)
 
 
-# In[117]:
+# In[39]:
 
 
 #element-wise multiplication of two matrices with same shape.
@@ -421,21 +421,21 @@ print(E*L)
 # ## Lesson 5 - Basic functions
 # Functions can be used in Python similarly to Matlab.
 
-# In[118]:
+# In[40]:
 
 
 #sum the columns of K. axis=0 means the vertical direction, axis=1 means horizontal direction
 print(np.sum(K,axis=0))
 
 
-# In[119]:
+# In[41]:
 
 
 #sum the rows of K.
 print(np.sum(K,axis=1))
 
 
-# In[120]:
+# In[42]:
 
 
 #find the mean of J (for each column) and store in mj
@@ -443,14 +443,14 @@ mj = np.mean(J, axis=0)
 print(mj)
 
 
-# In[121]:
+# In[43]:
 
 
 #transpose of K
 print(K.T)
 
 
-# In[122]:
+# In[44]:
 
 
 #create a matrix of random numbers with 3 rows and 5 columns
@@ -475,7 +475,7 @@ print(R)
 # <br>
 # In Python, we can apply boolean operations to arrays and the result is a Boolean array which are represented as "True" or "False" (although these are treated as 1 or 0 respectively for most operations).
 
-# In[123]:
+# In[45]:
 
 
 A = np.array([1,5,3,4,8,3])
@@ -484,21 +484,21 @@ print(B)
 print("An element of B is type:", type(B[0]))
 
 
-# In[124]:
+# In[46]:
 
 
 C = A<5
 print(C)
 
 
-# In[125]:
+# In[47]:
 
 
 D = B & C
 print(D)
 
 
-# In[126]:
+# In[48]:
 
 
 #extract the array from A where the boolean array D was True (i.e. condition D was met)
@@ -506,14 +506,14 @@ E = A[D]
 print(E)
 
 
-# In[127]:
+# In[49]:
 
 
 #can do this extraction in one line without the intermediate arrays.
 print(A[(A>2) & (A<5)])
 
 
-# In[128]:
+# In[50]:
 
 
 #convert a logical index (D) into a subscript index (F). D is a mask, where 3rd, 4th and 6th values of D are True.
@@ -521,14 +521,14 @@ F=np.where(D)
 print(F)
 
 
-# In[129]:
+# In[51]:
 
 
 #These indices can be used to extract the array from A meeting condition D (same result as above)
 print(A[F])
 
 
-# In[130]:
+# In[52]:
 
 
 #some data that corresponds to each cat. e.g. age
@@ -537,7 +537,7 @@ data = np.array([4,14,6,11,3,14,8,17,17,12,10,18])
 cat = np.array([1,3,2,1,2,2,3,1,3,2,3,1])
 
 
-# In[131]:
+# In[53]:
 
 
 #the parentheses are for clarity only. Which cats are type 2?
@@ -545,7 +545,7 @@ cat2 = (cat == 2)
 print(cat2)
 
 
-# In[132]:
+# In[54]:
 
 
 #show the data (age) of type 2 cats.
@@ -553,14 +553,14 @@ data2 = data[cat2]
 print(data2)
 
 
-# In[133]:
+# In[55]:
 
 
 #find the mean of the data of type 2 cats. NOTE np.average() is equivalent.
 print(np.mean(data2))
 
 
-# In[134]:
+# In[56]:
 
 
 #and here is the same calculation in compact form
@@ -574,13 +574,13 @@ print(np.average(data[cat==2]))
 # - np.nanvar()
 # - np.nanstd()
 
-# In[135]:
+# In[57]:
 
 
 print(np.nan)
 
 
-# In[136]:
+# In[58]:
 
 
 #dtype converts this from a integer to boolean array
@@ -595,7 +595,7 @@ newdat[err==True] = np.nan
 print(newdat)
 
 
-# In[137]:
+# In[59]:
 
 
 #Now the extracted data of cat type 2 will have NaN in it
@@ -603,14 +603,14 @@ data2 = newdat[cat2]
 print(data2)
 
 
-# In[138]:
+# In[60]:
 
 
 #If use the ordinary mean() we get "nan" meaning "can't calculate on this array"
 print(np.mean(data2))
 
 
-# In[139]:
+# In[61]:
 
 
 #Therefore we use the nanmean() instead
@@ -619,9 +619,9 @@ print(np.nanmean(data2))
 
 # ## Lesson 8 - Basic Graphs
 # There are multiple graphing options available in Python. The most common 2D plotting option is Matplotlib, and it is also the most similar to Matlab plot().
-# 
+#
 
-# In[140]:
+# In[62]:
 
 
 #sequence of 30 numbers from 0 to 2PI, i.e. the radian argument
@@ -629,7 +629,7 @@ x = np.linspace(0, 2*np.pi, num=30)
 print(x)
 
 
-# In[141]:
+# In[63]:
 
 
 #corresponding array of sin() values.
@@ -637,14 +637,14 @@ y = np.sin(x)
 print(y)
 
 
-# In[142]:
+# In[64]:
 
 
 z = 0.5 + np.cos(x/2)
 print(z)
 
 
-# In[143]:
+# In[67]:
 
 
 import matplotlib.pyplot as plt
@@ -658,30 +658,34 @@ plt.xlabel('x')
 plt.title('a couple of lines')
 #note that the legend items need to be in a list
 plt.legend(['y=sin(x)','z=0.5+cos(x/2)'])
+# Save figure to file.
+plt.savefig('Figure.png')  #In JN, must save your figure before using the show() command
 #The next line creates a interactive popup if it is in your script (instead of JN where it inserts it in the notebook)
 plt.show()
 #In a script you would normally save a figure as follows (but this is incompatible with the above plt.show)
-# plt.savefig('Figure.png')  
 plt.close()  #good form to close (clean up) at end otherwise you might have bad effects on following figures.
 
 
 # ### Plot some data
 # Make sure the file lesson2.mat is in a subdirectory of your current directory called 'matlab_exercises' and then run the following. You should see a 2D matrix with 3 columns & 10 rows.
 
-# In[144]:
+# In[68]:
 
 
 import scipy.io as sio
 import os
+import matplotlib.pyplot as plt
+import numpy as np
+
 #squeeze_me will turn the single column 2D matrix into a single row vector.
 mat_contents = sio.loadmat( 'matlab_exercises' + os.sep + 'lesson2.mat', squeeze_me=True)
 data = mat_contents['data']
 print(data)
 
 
-# To first look at all of the data, we could try a simple plot. The row index will be *x* and data values will be *y*, with separate lines for each column.
+# To first look at all of the data, we could try a simple plot. The row index will be *x* and data values will be *y*. If we use marker *bo* we will see only points, whereas with *b-o* we'll see separated lines for each column.
 
-# In[145]:
+# In[71]:
 
 
 plt.plot(data, 'bo')
@@ -689,15 +693,16 @@ plt.plot(data, 'bo')
 
 # We could look for a trend by plotting a regression line. Let's assume the columns are repeated trials and the rows are discrete conditions (like temperature), so we average across columns.
 
-# In[146]:
+# In[72]:
 
 
 #obtain the fit parameters from linear regression
-x = range(len(data[:,0]))
+# x will be the row indices
+x = range(data.shape[0])
 print(x)
-# average across columns, making a 1D vector.
+# for each row, find average across columns to make a 1D vector.
 avg = np.average(data, axis=1)
-print(y)
+print(avg)
 fit = np.polyfit(x, avg, 1)
 #obtain the function that represents the fit and can generate new values.
 fit_fn = np.poly1d(fit)
@@ -707,7 +712,7 @@ plt.plot(x, fit_fn(x), 'r-^')
 
 # Let's improve this with error bars, in this case standard deviations across each row of data.
 
-# In[147]:
+# In[73]:
 
 
 err = np.std(data, axis=1)
@@ -715,11 +720,23 @@ print(err)
 plt.errorbar(x, fit_fn(x), yerr=err, fmt='g-')
 
 
-# In[148]:
+# Now let's put all of this together and plot on a single graph.
+# **Warning**: It's a quirk of JN that you must put all the plotting commands in a single cell in order to see them overlaid on one plot.
+
+# In[74]:
 
 
-#plt.show() #provides interactive viewer of figure when run from a script instead of JN.
-plt.close() # clean up before plotting the next figure
+plt.plot(data, 'bo')
+x = range(data.shape[0])
+avg = np.average(data, axis=1)
+fit = np.polyfit(x, avg, 1)
+fit_fn = np.poly1d(fit)
+plt.plot(x, fit_fn(x), 'r-^')
+err = np.std(data, axis=1)
+plt.errorbar(x, fit_fn(x), yerr=err, fmt='g-')
+plt.savefig('Figure-Lesson8.png')
+plt.show()
+plt.close()
 
 
 # ## Lesson 9 - Basic scripts
@@ -727,7 +744,7 @@ plt.close() # clean up before plotting the next figure
 # - a human-readable text file containing Python commands.
 # - simple structure with only a small number of functions.
 # <br>
-# 
+#
 
 # You will write Python scripts with a texteditor (e.g. Atom, Notepad++) or an Integrated Development Environment (IDE) such as Spyder, which is built into the Anaconda package.<br>
 # The following descriptions will assume you are using a texteditor (not an IDE) as this is the most common choice.<br>
@@ -736,7 +753,7 @@ plt.close() # clean up before plotting the next figure
 # <b>python <i>scriptname.py</i></b><br>
 # This assumes that python has been installed and can be found ("on the path") within terminal, and that in your terminal session your current working directory is the same as the script named <i>scriptname.py</i>. This keeps things simple but you may instead want to specify the fullpathname of the script. An example on MacOS where the script is on your Desktop would be:<br>
 # <b>python /Users/pradau/Desktop/myscript.py</b><br>
-# 
+#
 # To avoid the hassle of typing python at the start each time you should put the "shebang" at the start of your script to indicate this is a Python script. e.g.<br>
 # <b>#!/usr/bin/env python</b><br>
 # In the terminal, change the permissions so that the script is an "executable" on your system.
@@ -746,11 +763,11 @@ plt.close() # clean up before plotting the next figure
 # <b>./myscript.py</b>
 
 # Unlike Matlab, you will not need to use the semi-colon (;) to suppress showing the result of each line. This is the default behavior in Python. Instead you will need to use a print() statement to show the variable or result of the calculation. (NOTE that in JN these are displayed by default.)<br>
-# Here is a simple script using data of a previous lession to 
+# Here is a simple script using data of a previous lession to
 # - find the mean of the data in each of the 3 categories
 # - put all of these into a variable mdat
 # - plot the results. <br>
-# 
+#
 # Enter these into your text editor and save it as "myscript.py"
 
 # In[ ]:
@@ -769,11 +786,10 @@ mdat[0] = np.mean(data[cat==1])
 mdat[1] = np.mean(data[cat==2])
 mdat[2] = np.mean(data[cat==3])
 print(mdat)
-#x = [0,1,2]
 x = range(0,3)
 plt.plot(x, mdat,'r-*')
 plt.title('Mean of data for each category')
-plt.savefig('Figure-script.png')  
+plt.savefig('Figure-script.png')
 
 
 # ## Lesson 10 - Flow Control
@@ -810,10 +826,10 @@ else:
 #This is a "non-pythonic" way to achieve the desired result. The loop is relatively slow.
 # Setting the data type to integer is not usually necessary but with numpy the default is float.
 #initialize an empty array of 0 elements
-A = np.empty(0,dtype=int)  
+A = np.empty(0,dtype=int)
 for i in range(1,5):
     A = np.append(A, [i*2])
-    print(A)    
+    print(A)
 
 
 # In[ ]:
@@ -849,7 +865,7 @@ print(mdat)
 
 # ### Switch
 # There is no direct parallel to switch. This simple example could be accomplished with a Python dictionary but in the real case where there are several lines of code for each case, the typical solution would be "if...elif...else"
-# 
+#
 
 # In[ ]:
 
@@ -877,7 +893,7 @@ while x==1:
     print(y)
     if y > 1:
         x = 2
-        
+
 
 
 # ### Try ... Except
@@ -906,20 +922,20 @@ for i in range(0,len(A)):
 # ## Lesson 11 - Functions
 # The syntax for Python functions is slightly different than Matlab. In this example the function is <b>nearest()</b>. In the body of the script it would be called like this:<br>
 # <b>index = nearest(vector, point)</b>
-# 
-# 
+#
+#
 
 # In[ ]:
 
 
 def nearest(vector, point):
-    ''' this function finds the index of the number in the vector which is closest in absolute terms to the 
+    ''' this function finds the index of the number in the vector which is closest in absolute terms to the
     point. If there is more than one match, only the 1st is returned. (This is the docstring)'''
     df = np.abs(vector - point)
     print('df',df)
     ind = np.argmin(df) #argmin() finds the index where df is minimum. Only first occurrence returned.
     return ind
-    
+
 vector = np.array(range(-5,5))
 point = np.array(range(20,10,-1))*1.5
 print(vector)
@@ -929,7 +945,7 @@ print('nearest index', nearest(vector,point))
 
 # ### Paths
 # When your program needs to check paths you will want to use the module <b>os</b>.
-# 
+#
 
 # In[ ]:
 
@@ -942,14 +958,14 @@ print(os.getcwd())
 # In[ ]:
 
 
-#to see the environment variable PATH where terminal will look for files. 
+#to see the environment variable PATH where terminal will look for files.
 print(os.getenv("PATH"))
 
 
 # ## Lesson 12 - More about variables
 # ### Saving and loading your data
 # The easiest way to load and save (i.e. read and write in typical terminology) data is to use the Pandas module. This will take care of most of the details that you would need to do yourself if you use the lower level functions in Python (e.g. read() and write()).
-# 
+#
 
 # In[ ]:
 
@@ -984,13 +1000,13 @@ print(dfnew)
 # In[ ]:
 
 
-#there are many options for reading/writing DataFrames 
+#there are many options for reading/writing DataFrames
 # e.g. writing a tab delimited file (sep) with no index in the first column and no column title
 dfnew.to_csv('mydata.txt', sep='\t', index=False, header=False)
 
 
 # The method shown above where we appended each kind of data in a single column is generally less desirable than creating a 2D dataframe where each column is a type, and each row has the values for these types. Here's an example of creating two rows in a dataframe with multiple types.
-# 
+#
 
 # In[ ]:
 
@@ -1123,7 +1139,7 @@ print(animals[animals=='cat'])
 
 
 # Here is an example of extracting a series of numbers from a DataFrame and converting it to a numpy array. This is often necessary to enable the full range of numeric functions available in numpy.
-# 
+#
 
 # In[ ]:
 
@@ -1185,7 +1201,7 @@ print(data[1]['subjectage'])
 # In[ ]:
 
 
-import subprocess 
+import subprocess
 import shlex
 
 def systemcall ( cmdstr ):
@@ -1197,7 +1213,7 @@ def systemcall ( cmdstr ):
         return retcode
     except OSError as e:
         print ("Execution failed:", e )
-        
+
 def systemcall_pipe( cmdstr, allow=None, disp=True ):
     ''' System call to execute command string, to get stderr and stdout output in variable proc. '''
     # this function is superior to systemcall for use with Spyder where otherwise stdout/stderr are not visible.
@@ -1244,7 +1260,7 @@ stdout, stderr = systemcall_pipe(cmdstr)
 
 # ## Advanced Graphs
 # There are a vast number of graphing options which are detailed at the matplotlib.org website. I will start with a modified example from this [page](http:/matplotlib.org), then modify it to show some of the frequently used features. It is possible, but rarely needed, to get a 'handle' to a figure, axis or line. Instead just find the appropriate argument for <b>plot</b> or another function (e.g.<b>xlabel</b>) to modify the plot.
-# 
+#
 
 # In[ ]:
 
@@ -1325,7 +1341,7 @@ plt.savefig('image.png')
 # ## Lesson 14 - Reading a Data file using Open and Read
 # The best file reading method is data-dependent. My rule-of-thumb is that when the data are in a structured, matrix form (fixed number of rows and columns with a single type in each column) they are best read with Pandas DataFrame <b>from_csv</b>, and that for all other structures you will likely need to use the <b>open</b> and <b>read</b> functions. Given that Lesson 12 already covered some Pandas basics, I'll focus on the more low level functions.<br>
 # Many resources on the web will recommend doing this like the following simple example, which assumes you have "myfile.txt" text file in the same directory as this python code.
-# 
+#
 
 # In[ ]:
 
@@ -1354,7 +1370,7 @@ with open('myfile.txt', 'r') as infile:
         # If the text file has line returns at the end of each line, empty lines will be inserted in the print() output.
         print('{0}:{1}'.format(idx,line))
         idx +=1
-        
+
 
 
 # In addition we would like to handle common error cases in a user-friendly fashion. Here are some typical cases. Test it out by inserting incorrect directory or filenames below.
@@ -1373,17 +1389,17 @@ if not os.path.isdir(mydir):
 if not os.path.isfile(pathname):
     print("Your file doesn't exist at this path:", pathname)
     sys.exit(1)
-    
+
 with open(pathname, 'r') as infile:
     for line in infile:
         #print each line of the file regardless of what's in it with prefix (linenumber:)
         # If the text file has line returns at the end of each line, empty lines will be inserted in the print() output.
         print('{}'.format(line))
-        
+
 
 
 # To do something useful with the data you will typically need to parse each line. Here's an example where the lines are each put in separate lists by splitting at the whitespace (and throwing the whitespace away, such as spaces and tabs).
-# 
+#
 
 # In[ ]:
 
@@ -1454,4 +1470,3 @@ import numpy as np
 img=mpimg.imread('GoogleTrends.png')
 plt.figure(figsize = (50,50))
 plt.imshow(img)
-
