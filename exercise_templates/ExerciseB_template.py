@@ -51,10 +51,12 @@ print('K\n', K)
 
 print("#4")
 print("matrix multiplication of A by B transpose")
+#code to try 4a here
 print("element wise multiplication A*B")
+#code for 4b
 
 #5
-
+#This question can be done with for loop code but there is a (better) numpy way.
 
 
 print("#5")
