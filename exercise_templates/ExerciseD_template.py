@@ -6,6 +6,8 @@
 #Exercise D
 import numpy as np
 import scipy.io as sio
+print("TEMP")
+myscrewup
 
 #1
 #after loading 'data' array, you should set the type to float so that it doesn't default to integer operations.
